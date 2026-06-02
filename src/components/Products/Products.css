@@ -1,0 +1,140 @@
+.products {
+  padding: 7rem 0;
+  background: var(--paper);
+}
+
+.products-layout {
+  display: grid;
+  gap: 3rem;
+}
+
+.products-heading {
+  display: grid;
+  max-width: 840px;
+  gap: 1.1rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.product-card {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--paper-strong);
+  box-shadow: var(--shadow-soft);
+}
+
+.product-card:nth-child(2),
+.product-card:nth-child(3) {
+  min-height: 460px;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  transition: transform 620ms ease;
+}
+
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(16, 9, 21, 0.78) 74%, rgba(16, 9, 21, 0.96));
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.06);
+}
+
+.product-info {
+  position: absolute;
+  inset: auto 1rem 1rem 1rem;
+  z-index: 1;
+  display: grid;
+  gap: 0.55rem;
+  padding: 1rem;
+  border: 1px solid var(--light-line);
+  border-radius: var(--radius);
+  background: rgba(16, 9, 21, 0.36);
+  backdrop-filter: blur(16px);
+}
+
+.product-info span {
+  color: #a8ffdc;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.product-info h3 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.product-info p {
+  color: rgba(255, 250, 242, 0.78);
+  font-size: 0.95rem;
+}
+
+.product-info .text-link {
+  color: var(--sun);
+}
+
+.products-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  background:
+    linear-gradient(90deg, rgba(8, 124, 90, 0.12), rgba(85, 32, 111, 0.1)),
+    var(--paper-strong);
+  box-shadow: var(--shadow-tight);
+}
+
+.products-callout p {
+  max-width: 700px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+@media (max-width: 1040px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card,
+  .product-card:nth-child(2),
+  .product-card:nth-child(3) {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 700px) {
+  .products {
+    padding: 4.5rem 0;
+  }
+
+  .product-card,
+  .product-card:nth-child(2),
+  .product-card:nth-child(3) {
+    min-height: 430px;
+  }
+
+  .products-callout {
+    display: grid;
+  }
+}

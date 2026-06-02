@@ -1,0 +1,306 @@
+.contact-footer {
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 0 2rem;
+  background:
+    linear-gradient(135deg, rgba(8, 124, 90, 0.25), transparent 42%),
+    var(--ink);
+  color: var(--paper-strong);
+}
+
+.contact-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(125deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 34px);
+  opacity: 0.45;
+}
+
+/* BENTO GRID LAYOUT */
+.bento-grid {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  z-index: 1;
+}
+
+/* CARDS STYLING */
+.bento-card {
+  background: rgba(255, 250, 242, 0.06);
+  border: 1px solid rgba(255, 250, 242, 0.12);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-link {
+  text-decoration: none;
+  color: var(--paper-strong);
+  transition: background var(--transition), transform var(--transition), border-color var(--transition);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem; /* slightly less padding for links */
+}
+
+.bento-link:hover {
+  background: rgba(8, 124, 90, 0.25);
+  border-color: rgba(16, 168, 115, 0.4);
+  transform: translateY(-4px);
+}
+
+/* SPECIFIC CARDS */
+.bento-brand {
+  gap: 1.5rem;
+  background: rgba(255, 250, 242, 0.03); /* slightly darker for the main text */
+}
+
+.bento-logo {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.bento-heading {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--paper);
+}
+
+.bento-copy {
+  color: rgba(255, 250, 242, 0.76);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.bento-address {
+  margin-top: auto;
+  font-style: italic;
+  color: rgba(255, 250, 242, 0.6);
+  font-size: 0.95rem;
+}
+
+/* LINK CARDS CONTENT */
+.bento-label {
+  color: var(--sun);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.bento-link strong {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.bento-email strong {
+  font-size: 1.15rem; /* slightly smaller to fit long email */
+  word-break: break-all;
+}
+
+.bento-icon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--emerald-bright);
+  transition: transform 0.3s ease;
+}
+
+.bento-link:hover .bento-icon {
+  transform: translate(3px, -3px);
+}
+
+/* FORM CARD */
+.bento-form-card {
+  gap: 2rem;
+  background: rgba(16, 9, 21, 0.4); /* darker to contrast with inputs */
+}
+
+.bento-form-card h3 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--sun);
+}
+
+.bento-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.bento-form label {
+  display: grid;
+  gap: 0.5rem;
+  color: rgba(255, 250, 242, 0.9);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.bento-form input,
+.bento-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 250, 242, 0.15);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--paper-strong);
+  font-family: inherit;
+  outline: 0;
+  resize: vertical;
+  transition: all var(--transition);
+}
+
+.bento-form input:focus,
+.bento-form textarea:focus {
+  border-color: var(--emerald-bright);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(16, 168, 115, 0.15);
+}
+
+.bento-form input::placeholder,
+.bento-form textarea::placeholder {
+  color: rgba(255, 250, 242, 0.4);
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 250, 242, 0.15);
+  padding-top: 1.5rem;
+  color: rgba(255, 250, 242, 0.6);
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+.footer-bottom a {
+  color: var(--sun);
+  font-weight: 800;
+}
+
+.footer-credits {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0.6;
+  transition: opacity var(--transition);
+}
+
+.footer-credits:hover {
+  opacity: 1;
+}
+
+.novar-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.novar-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 52px;
+  height: 52px;
+  background: rgba(8, 124, 90, 0.1);
+  border: 1px solid rgba(16, 168, 115, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emerald-bright);
+  transition: all var(--transition);
+  z-index: 10;
+  text-decoration: none;
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+}
+
+.back-to-top:hover {
+  background: var(--emerald-bright);
+  color: var(--paper-strong);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(8, 124, 90, 0.4);
+}
+
+/* RESPONSIVE DESKTOP (The actual Bento arrangement) */
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto auto auto;
+  }
+  .bento-brand { grid-area: 1 / 1 / 3 / 3; }
+  .bento-whatsapp { grid-area: 3 / 1 / 4 / 2; }
+  .bento-community { grid-area: 3 / 2 / 4 / 3; }
+  .bento-email { grid-area: 4 / 1 / 5 / 3; }
+  .bento-facebook { grid-area: 5 / 1 / 6 / 3; }
+  .bento-form-card { grid-area: 1 / 3 / 6 / 5; }
+}
+
+/* RESPONSIVE TABLET */
+@media (max-width: 1023px) and (min-width: 640px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-brand { grid-column: span 2; }
+  .bento-whatsapp { grid-column: span 1; }
+  .bento-community { grid-column: span 1; }
+  .bento-email { grid-column: span 2; }
+  .bento-facebook { grid-column: span 2; }
+  .bento-form-card { grid-column: span 2; }
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 639px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-footer {
+    padding-top: 4rem;
+    padding-bottom: 5rem; /* Make room for absolute button on mobile */
+  }
+  .bento-card {
+    padding: 1.5rem;
+  }
+  .bento-heading {
+    font-size: 2.5rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .back-to-top {
+    bottom: 1.5rem;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .back-to-top:hover {
+    transform: translate(50%, -5px);
+  }
+}
