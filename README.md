@@ -1,16 +1,61 @@
-# React + Vite
+# RAFS — Réseau pour l'Autonomie des Femmes du Sankaran
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site vitrine de l'ONG RAFS (Faranah, Guinée).
+Production : **https://rafs-gn.org**
 
-Currently, two official plugins are available:
+Stack : React 19 + Vite, page unique, hébergement Vercel.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Commandes
 
-## React Compiler
+```bash
+npm install
+npm run dev       # serveur de développement
+npm run build     # build de production + pré-rendu
+npm run preview   # sert le build de production en local
+npm run lint
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Pré-rendu (SSG)
 
-## Expanding the ESLint configuration
+`npm run build` enchaîne deux étapes :
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. `vite build` → bundle client dans `dist/`
+2. `node scripts/prerender.mjs` → rend `<App />` en HTML au moment du build et
+   l'injecte dans `dist/index.html`
+
+Sans cette seconde étape, le HTML servi ne contiendrait qu'un `<div id="root">`
+vide : tout le contenu dépendrait de l'exécution du JavaScript. Le pré-rendu
+apporte une indexation fiable (Google, Bing, crawlers IA), un affichage
+beaucoup plus rapide, et un site lisible même si le JS échoue.
+
+Côté client, `src/main.jsx` **hydrate** ce HTML au lieu de le reconstruire.
+
+> Conséquence : les composants doivent produire le même rendu au build et au
+> premier rendu client. Éviter d'initialiser un état à partir de `window`, d'un
+> timer ou d'une valeur aléatoire — sinon React signale une erreur
+> d'hydratation. Les `useEffect` ne s'exécutent pas au pré-rendu, ce qui est le
+> comportement attendu pour les carrousels.
+
+## Référencement — où se trouve quoi
+
+| Élément | Fichier |
+| --- | --- |
+| Title, meta description, Open Graph, Twitter Card | `index.html` |
+| Données structurées JSON-LD (NGO, WebSite, WebPage, Course) | `index.html` |
+| URL canonique | `index.html` (`<link rel="canonical">`) |
+| robots.txt / sitemap.xml | `public/` |
+| Icônes, manifeste PWA | `public/` |
+| Redirections, cache, en-têtes de sécurité | `vercel.json` |
+
+Toute URL absolue du site pointe vers `https://rafs-gn.org` (sans `www`).
+En cas de changement de domaine, mettre à jour : `index.html`,
+`public/robots.txt`, `public/sitemap.xml`, `vercel.json`.
+
+Après chaque mise à jour de contenu, penser à actualiser `<lastmod>` dans
+`public/sitemap.xml`.
+
+## Icônes
+
+Les icônes de `public/` sont dérivées de `src/assets/rafs-logo.jpg` (200×200).
+Un logo vectoriel ou ≥ 512 px donnerait un résultat plus net — à remplacer dès
+qu'il sera disponible.

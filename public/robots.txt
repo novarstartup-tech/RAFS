@@ -1,4 +1,7 @@
+# https://rafs-gn.org
+# RAFS - Réseau pour l'Autonomie des Femmes du Sankaran
+
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rafs-faranah.com/sitemap.xml
+Sitemap: https://rafs-gn.org/sitemap.xml

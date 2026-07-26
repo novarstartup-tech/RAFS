@@ -12,16 +12,56 @@ import sac10 from '../../assets/optimized/sac-10.jpg';
 import sac12 from '../../assets/optimized/sac-12.jpg';
 
 const creations = [
-  { id: 2, src: sac2, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 3, src: sac3, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 4, src: sac4, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 5, src: sac5, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 6, src: sac6, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 7, src: sac7, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 8, src: sac8, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 9, src: sac9, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 10, src: sac10, alt: 'Création artisanale par une apprenante RAFS' },
-  { id: 12, src: sac12, alt: 'Création artisanale par une apprenante RAFS' },
+  {
+    id: 2,
+    src: sac2,
+    alt: "Sac à main au crochet en fil chenille bleu et beige, chaîne dorée, réalisé par une artisane RAFS à Faranah",
+  },
+  {
+    id: 3,
+    src: sac3,
+    alt: "Sac à bandoulière crocheté bleu turquoise et noir avec fermoir doré, création RAFS",
+  },
+  {
+    id: 4,
+    src: sac4,
+    alt: "Sac au crochet à motif zigzag rouge et vert d'eau, chaîne dorée, artisanat féminin du Sankaran",
+  },
+  {
+    id: 5,
+    src: sac5,
+    alt: "Sac crocheté à chevrons bleus et vert menthe, fait main par les femmes du réseau RAFS",
+  },
+  {
+    id: 6,
+    src: sac6,
+    alt: "Sac à main en fil chenille rouge et écru à motif zigzag, création artisanale RAFS Faranah",
+  },
+  {
+    id: 7,
+    src: sac7,
+    alt: "Sac crocheté beige et noir à rayures avec chaîne dorée, réalisé en formation couture RAFS",
+  },
+  {
+    id: 8,
+    src: sac8,
+    alt: "Sac à main crocheté chiné bordeaux et blanc, chaîne argentée, artisanat des femmes de Faranah",
+  },
+  {
+    id: 9,
+    src: sac9,
+    alt: "Collection de sacs à main au crochet aux couleurs variées, produits par les apprenantes RAFS",
+  },
+  {
+    id: 10,
+    src: sac10,
+    alt: "Sacs à main crochetés vert menthe et rouge présentés côte à côte, production RAFS Faranah",
+  },
+  {
+    id: 12,
+    src: sac12,
+    alt: "Assortiment de sacs à main en fil chenille crochetés par les artisanes du réseau RAFS",
+  },
 ];
 
 const Gallery = () => {
@@ -70,18 +110,31 @@ const Gallery = () => {
               style={{ transform: `translateX(calc(-${currentIndex} * var(--item-width)))` }}
             >
               {/* To make infinite loop visually pleasing without complex cloning, we just duplicate the array once so it flows nicely */}
-              {[...creations, ...creations].map((item, index) => (
-                <figure key={`${item.id}-${index}`} className="gallery-item">
-                  <div className="gallery-img-container">
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </figure>
-              ))}
+              {[...creations, ...creations].map((item, index) => {
+                // La seconde moitié n'est qu'un clone visuel pour la boucle du
+                // carrousel : on la masque aux lecteurs d'écran et aux moteurs
+                // pour ne pas dupliquer chaque création.
+                const isClone = index >= creations.length;
+
+                return (
+                  <figure
+                    key={`${item.id}-${index}`}
+                    className="gallery-item"
+                    aria-hidden={isClone || undefined}
+                  >
+                    <div className="gallery-img-container">
+                      <img
+                        src={item.src}
+                        alt={isClone ? '' : item.alt}
+                        loading="lazy"
+                        decoding="async"
+                        width="800"
+                        height="1067"
+                      />
+                    </div>
+                  </figure>
+                );
+              })}
             </div>
           </div>
 

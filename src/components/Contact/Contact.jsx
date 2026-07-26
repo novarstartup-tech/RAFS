@@ -13,14 +13,22 @@ const Contact = () => {
           
           {/* Card 1: Brand & Manifesto (Large) */}
           <div className="bento-card bento-brand">
-            <img src={logo} alt="Logo RAFS" className="bento-logo" />
+            <img
+              src={logo}
+              alt="Logo de RAFS, Réseau pour l'Autonomie des Femmes du Sankaran"
+              className="bento-logo"
+              width="200"
+              height="200"
+              loading="lazy"
+              decoding="async"
+            />
             <h2 className="bento-heading">Travaillons<br/>Ensemble.</h2>
             <p className="bento-copy">
               Partenariat, appui en matériel, mentorat ou mise en relation :
               chaque contribution aide une femme à transformer une compétence en activité durable.
             </p>
             <p className="bento-address">
-              <strong>Siège :</strong> Guinée, Faranah, Guinea, 224 Conakry
+              <strong>Siège :</strong> Faranah, République de Guinée
             </p>
           </div>
 
@@ -87,7 +95,13 @@ const Contact = () => {
           <div className="footer-credits">
             <span>Développé par</span>
             <span className="novar-badge">
-              <img src={novarLogo} alt="Novar Logo" className="novar-logo" />
+              <img
+                src={novarLogo}
+                alt="Novar"
+                className="novar-logo"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
           </div>
         </div>

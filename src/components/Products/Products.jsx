@@ -1,6 +1,6 @@
 import './Products.css';
 import programImage1 from '../../assets/optimized/outputs.jpg';
-import programImage2 from '../../assets/optimized/saponification.png';
+import programImage2 from '../../assets/optimized/saponification.jpg';
 import programImage3 from '../../assets/optimized/community.jpg';
 
 const initiatives = [
@@ -10,6 +10,10 @@ const initiatives = [
     category: 'Artisanat et couture',
     detail: 'Des ateliers qui transforment la précision, le goût et le savoir-faire local en activités économiques.',
     image: programImage1,
+    imageAlt:
+      "Apprenantes du réseau RAFS présentant les sacs à main qu'elles ont crochetés en formation à Faranah",
+    width: 900,
+    height: 600,
   },
   {
     id: 2,
@@ -17,6 +21,10 @@ const initiatives = [
     category: 'Agro-alimentaire et saponification',
     detail: 'Des compétences de transformation pour créer des revenus autour de produits utiles au quotidien.',
     image: programImage2,
+    imageAlt:
+      'Produits issus de la transformation locale : huiles, savons et conserves en bocaux',
+    width: 1024,
+    height: 1024,
   },
   {
     id: 3,
@@ -24,6 +32,10 @@ const initiatives = [
     category: 'Finance, gestion et conférences',
     detail: 'Des espaces de parole et de formation pour préparer des femmes capables de négocier, gérer et décider.',
     image: programImage3,
+    imageAlt:
+      "Promotion RAFS réunie sur scène avec ses attestations lors de la cérémonie de remise à Faranah",
+    width: 1000,
+    height: 667,
   },
 ];
 
@@ -45,12 +57,12 @@ const Products = () => {
             <div key={initiative.id} className="product-card">
               <img
                 src={initiative.image}
-                alt={initiative.name}
+                alt={initiative.imageAlt}
                 className="product-img"
                 loading="lazy"
                 decoding="async"
-                width="900"
-                height="600"
+                width={initiative.width}
+                height={initiative.height}
               />
               <div className="product-info">
                 <span>{initiative.category}</span>

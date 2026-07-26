@@ -1,10 +1,20 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root')
+
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )
+
+// En production le HTML est pré-rendu au build : on hydrate au lieu de
+// reconstruire le DOM. En dev (#root vide), rendu client classique.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app)
+} else {
+  createRoot(container).render(app)
+}
